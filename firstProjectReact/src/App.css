@@ -1,6 +1,7 @@
 .superheroes {
   display: flex;
-  gap: 15px
+  gap: 10px;
+  margin: 20px;
 }
 
 .superhero {
