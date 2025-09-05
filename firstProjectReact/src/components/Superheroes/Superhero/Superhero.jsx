@@ -1,18 +1,22 @@
+import "./Superhero.css";
+
 export default function Superhero({
   name,
   description,
   films = ["Aucun film pour ce superHero"],
-  ...props
+  img,
+  alt,
 }) {
   return (
     <div className="superhero">
+      <img src={img} alt={alt} />
       <h2> {name} </h2>
       <p>{description}</p>
       <div>
         <b>Films :</b>
         <ul>
-          {films.map((film) => (
-            <li>{film}</li>
+          {films.map((film, index) => (
+            <li key={index}>{film}</li>
           ))}
         </ul>
       </div>

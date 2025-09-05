@@ -1,0 +1,17 @@
+.superhero {
+  background-color: #f1f1f1;
+  padding: 15px;
+}
+
+.superhero h2 {
+  text-align: center;
+}
+
+.superhero img {
+  display: block;
+  margin: 0 auto 15px auto;
+  width: 10vw;
+  height: 10vw;
+  border-radius:50px;
+  object-fit: cover;
+}
