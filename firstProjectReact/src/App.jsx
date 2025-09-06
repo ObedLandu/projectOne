@@ -15,7 +15,8 @@ export default function App() {
           description="Hulk is a fictional superhero appearing in American comic books
             published by Marvel Comics. Created by writer Stan Lee and artist
             Jack Kirby, the character first appeared in The Incredible Hulk #1
-            (May 1962). The Hulk is the alter ego of Dr. Robert Bruce Banner, a
+            (May 1962). "
+          details="The Hulk is the alter ego of Dr. Robert Bruce Banner, a
             physically weak, socially withdrawn, and emotionally reserved
             physicist who, after a gamma bomb test goes wrong, transforms into a
             raging green-skinned giant whenever he is subjected to emotional
@@ -29,8 +30,8 @@ export default function App() {
           alt="captain america"
           name="Captain America"
           description=" Captain America is a comic-strip superhero created by writer Joe
-            Simon and artist Jack Kirby for Timely (later Marvel) Comics. The
-            character debuted in March 1941 in Captain America Comics no. 1. The
+            Simon and artist Jack Kirby for Timely (later Marvel) Comics."
+          details=" The character debuted in March 1941 in Captain America Comics no. 1. The
             star-spangled super soldier would become one of Marvel’s most iconic
             and enduring characters."
         />
@@ -44,12 +45,13 @@ export default function App() {
             published by DC Comics. Created by writer Jerry Siegel and artist
             Joe Shuster, the character first appeared in Action Comics #1 (June
             1938). Superman is the alter ego of Clark Kent, a mild-mannered
-            reporter for the Daily Planet in the city of Metropolis. Born on the
-            planet Krypton as Kal-El, he was sent to Earth as an infant by his
-            parents just before Krypton's destruction. Raised by a Kansas
-            farming couple, he developed superhuman abilities under Earth's
-            yellow sun, including super strength, flight, invulnerability, heat
-            vision, x-ray vision, super speed, and enhanced senses."
+            reporter for the Daily Planet in the city of Metropolis."
+          details=" Superman was born Kal-El on the planet Krypton, before being rocketed
+            to Earth as an infant by his scientist father Jor-El, moments
+            before Krypton's destruction. He was found and raised by Jonathan and
+            Martha Kent in the rural town of Smallville, Kansas, who named him
+            Clark Kent. As he grew up, Clark developed various superhuman
+            abilities, which he uses to protect humanity."
         />
       </Superheroes>
     </>
