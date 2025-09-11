@@ -7,11 +7,13 @@ export default function Superhero({
   films = ["Aucun film pour ce superHero"],
   img,
   alt,
+  estLeFavori,
   details = "Aucun détail pour ce superHero",
+  superheroClique
 }) {
   const [afficherDetails, setAfficherDetails] = useState(false);
   return (
-    <div className="superhero">
+    <div className={`superhero ${estLeFavori ? "superhero-favori" : ""}`} onClick={ () => superheroClique(name) }>
       <img src={img} alt={alt} />
       <h2> {name} </h2>
       <p>{description}</p>

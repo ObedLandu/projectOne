@@ -1,8 +1,15 @@
 import Superhero from "./components/Superheroes/Superhero/Superhero";
 import Superheroes from "./components/Superheroes/Superheroes";
 import captainAmerica from "./assets/captainAmerica.jpg";
+import { useState } from "react";
 
 export default function App() {
+  const [superheroPrefere, setSuperHeroPrefere] = useState();
+
+  const superheroClique = (name) => {
+    setSuperHeroPrefere(name);
+  };
+
   return (
     <>
       <h1>Marvel</h1>
@@ -22,6 +29,8 @@ export default function App() {
             raging green-skinned giant whenever he is subjected to emotional
             stress."
           films={["Avengers", "Age of Ultron", "Thor: Ragnarok"]}
+          estLeFavori={superheroPrefere == "Hulk"}
+          superheroClique={superheroClique}
         />
 
         {/* superhero numéro 2 */}
@@ -34,6 +43,8 @@ export default function App() {
           details=" The character debuted in March 1941 in Captain America Comics no. 1. The
             star-spangled super soldier would become one of Marvel’s most iconic
             and enduring characters."
+          estLeFavori={superheroPrefere == "Captain America"}
+          superheroClique={superheroClique}
         />
 
         {/* superhero numéro 3 */}
@@ -52,6 +63,8 @@ export default function App() {
             Martha Kent in the rural town of Smallville, Kansas, who named him
             Clark Kent. As he grew up, Clark developed various superhuman
             abilities, which he uses to protect humanity."
+          estLeFavori={superheroPrefere == "Superman"}
+          superheroClique={superheroClique}
         />
       </Superheroes>
     </>
