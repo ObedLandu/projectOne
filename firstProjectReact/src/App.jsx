@@ -5,6 +5,7 @@ import { useState } from "react";
 
 export default function App() {
   const [superheroPrefere, setSuperHeroPrefere] = useState();
+  const [nouveauNomDuSuperhero, setNouveauNomDuSuperhero] = useState("Anonyme");
 
   const superheroClique = (name) => {
     setSuperHeroPrefere(name);
@@ -66,6 +67,21 @@ export default function App() {
           estLeFavori={superheroPrefere == "Superman"}
           superheroClique={superheroClique}
         />
+        <Superhero name= {nouveauNomDuSuperhero} />
+        {/* //paramétrage du superhero numéro 4 */}
+        <div
+          style={{
+            border: "2px solid black",
+            padding: "15px",
+            marginTop: "20px",
+          }}
+        >
+          <h3 style={{ textAlign: "center" }}>Crée ton propre Superhero</h3>
+          <label htmlFor="name">Name</label>
+          <input id="name" type="text" name="nom" style={{padding : 10, display : "block" }} value={nouveauNomDuSuperhero}/>
+          <label htmlFor="description">Description</label>
+          <input id="description" type="text" style={{padding : 10, display : "block" }}/>
+        </div>
       </Superheroes>
     </>
   );
