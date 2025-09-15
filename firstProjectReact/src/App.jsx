@@ -1,15 +1,31 @@
 import Superhero from "./components/Superheroes/Superhero/Superhero";
 import Superheroes from "./components/Superheroes/Superheroes";
 import captainAmerica from "./assets/captainAmerica.jpg";
-import { useState } from "react";
+import { useRef, useState } from "react";
 
+
+// hooks  (useState)
 export default function App() {
   const [superheroPrefere, setSuperHeroPrefere] = useState();
   const [nouveauNomDuSuperhero, setNouveauNomDuSuperhero] = useState("Anonyme");
+  const [nouvelleDescDuSuperhero, setNouvelleDescDuSuperhero] = useState("");
+  const [nouvelleImage, setNouvelleImage] = useState()
 
+  // le hook useRef
+  const nom = useRef()
+  const description = useRef()
+  const photo = useRef()
+
+
+  // fonctions
   const superheroClique = (name) => {
     setSuperHeroPrefere(name);
   };
+
+  const sauvegarderLeSuperhero =  () => {
+    nouveauNomDuSuperhero()
+    nouvelleDescDuSuperhero()
+  }
 
   return (
     <>
@@ -67,20 +83,61 @@ export default function App() {
           estLeFavori={superheroPrefere == "Superman"}
           superheroClique={superheroClique}
         />
-        <Superhero name= {nouveauNomDuSuperhero} />
+        <Superhero
+          name={nouveauNomDuSuperhero}
+          description={nouvelleDescDuSuperhero}
+        />
         {/* //paramétrage du superhero numéro 4 */}
         <div
           style={{
             border: "2px solid black",
             padding: "15px",
             marginTop: "20px",
+            borderRadius: "10px",
+            maxWidth: "400px",
+            marginLeft: "auto",
+            marginRight: "auto",
+            backgroundColor: "#f0f0f0",
+            boxShadow: "0 4px 8px rgba(0, 0, 0, 0.1)",
+            fontFamily: "Arial, sans-serif",
+            color: "#333",
+            lineHeight: "1.6",
+            textAlign: "left",
+            cursor: "default",
+            userSelect: "none",
+            transition: "transform 0.2s",
           }}
         >
           <h3 style={{ textAlign: "center" }}>Crée ton propre Superhero</h3>
           <label htmlFor="name">Name</label>
-          <input id="name" type="text" name="nom" style={{padding : 10, display : "block" }} value={nouveauNomDuSuperhero}/>
+          <input
+            id="name"
+            type="text"
+            name="nom"
+            style={{ padding: 10, display: "block", width: "100%" }}
+            ref={nom}
+            // value={nouveauNomDuSuperhero}
+            // onChange={(event) => setNouveauNomDuSuperhero(event.target.value)}
+          />
           <label htmlFor="description">Description</label>
-          <input id="description" type="text" style={{padding : 10, display : "block" }}/>
+          <input
+            id="description"
+            type="text"
+            style={{ padding: 10, display: "block", width: "100%" }}
+            ref={description}
+            // value={nouvelleDescDuSuperhero}
+            // onChange={(event) => setNouvelleDescDuSuperhero(event.target.value)}
+          />
+          <label htmlFor="img">Photo</label>
+          <input
+            id="img"
+            type="text"   
+            ref={photo}         
+          />
+
+          <div style={{ display: "flex", justifyContent: "end", marginTop: 5 }} onClick={() => {sauvegarderLeSuperhero()}}>
+            <button>Modifier</button>
+          </div>
         </div>
       </Superheroes>
     </>
