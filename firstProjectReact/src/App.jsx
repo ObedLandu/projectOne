@@ -1,7 +1,7 @@
 import Superhero from "./components/Superheroes/Superhero/Superhero";
 import Superheroes from "./components/Superheroes/Superheroes";
 import captainAmerica from "./assets/captainAmerica.jpg";
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 // hooks  (useState)
 export default function App() {
@@ -10,10 +10,21 @@ export default function App() {
   const [nouvelleDescDuSuperhero, setNouvelleDescDuSuperhero] = useState("");
   const [nouvellePhoto, setNouvellePhoto] = useState("");
 
-  // le hook useRef
+  // le hook useRef (variables qui vont référencer les input)
   const nom = useRef();
   const description = useRef();
   const photo = useRef();
+
+  //cycle
+  useEffect(() => {
+    nom.current.focus();
+  }, [nouveauNomDuSuperhero, nouvelleDescDuSuperhero, nouvellePhoto]);
+
+  useEffect(() => {
+    (nom.current.value = ""),
+      (description.current.value = ""),
+      (photo.current.value = "");
+  }, [nouveauNomDuSuperhero]);
 
   // fonctions
   const superheroClique = (name) => {
@@ -24,7 +35,6 @@ export default function App() {
     setNouveauNomDuSuperhero(nom.current.value);
     setNouvelleDescDuSuperhero(description.current.value);
     setNouvellePhoto(photo.current.value);
-    
   };
 
   return (
@@ -86,7 +96,7 @@ export default function App() {
         <Superhero
           name={nouveauNomDuSuperhero}
           description={nouvelleDescDuSuperhero}
-          photo={nouvellePhoto}
+          img={nouvellePhoto}
         />
         {/* //paramétrage du superhero numéro 4 */}
         <div
@@ -135,8 +145,6 @@ export default function App() {
             type="text"
             style={{ padding: 10, display: "block", width: "100%" }}
             ref={photo}
-            // value={nouvelleImage}
-            // onChange={(event) => setNouvelleImage(event.target.value)}
           />
 
           <div
