@@ -12,10 +12,45 @@ export default function Superhero({
   superheroClique = () => {},
 }) {
   const [afficherDetails, setAfficherDetails] = useState(false);
+  const [afficherModale, setAfficherModale] = useState(false);
+
+  const afficherInfos = (e) => {
+    e.stopPropagation();
+    setAfficherModale(true);
+  };
+
   return (
-    <div className={`superhero ${estLeFavori ? "superhero-favori" : ""}`} onClick={ () => superheroClique(name) }>
+    <div
+      className={`superhero ${estLeFavori ? "superhero-favori" : ""}`}
+      onClick={() => superheroClique(name)}
+      style={{ position: "relative" }}
+    >
+      {afficherModale && (
+        <div
+          style={{
+            background: "rgba(0, 0, 0, 0.9)",
+            position: "absolute",
+            bottom: 0,
+            right: 0,
+            top: 0,
+            left: 0,
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+          }}
+        >
+          <div style={{ padding: 30, background: "white" }}>
+            <b>Informations</b>
+            <ul>
+              <li>Taille : 1,85</li>
+              <li>Couleur des cheveux : Noirs</li>
+              <li>Couleur des yeux : Bleus</li>
+            </ul>
+          </div>
+        </div>
+      )}
       <img src={img} alt={alt} />
-      <h2> {name} </h2>
+      <h2 onClick={afficherInfos}> {name} </h2>
       <p>{description}</p>
       <div
         className="more-details"
