@@ -1,5 +1,6 @@
 import { useState } from "react";
 import "./Superhero.css";
+import { createPortal } from "react-dom";
 
 export default function Superhero({
   name,
@@ -25,30 +26,36 @@ export default function Superhero({
       onClick={() => superheroClique(name)}
       style={{ position: "relative" }}
     >
-      {afficherModale && (
-        <div
-          style={{
-            background: "rgba(0, 0, 0, 0.9)",
-            position: "absolute",
-            bottom: 0,
-            right: 0,
-            top: 0,
-            left: 0,
-            display: "flex",
-            justifyContent: "center",
-            alignItems: "center",
-          }}
-        >
-          <div style={{ padding: 30, background: "white" }}>
-            <b>Informations</b>
-            <ul>
-              <li>Taille : 1,85</li>
-              <li>Couleur des cheveux : Noirs</li>
-              <li>Couleur des yeux : Bleus</li>
-            </ul>
-          </div>
-        </div>
-      )}
+      {afficherModale &&
+        createPortal(
+          <div
+            style={{
+              background: "rgba(0, 0, 0, 0.9)",
+              position: "absolute",
+              bottom: 0,
+              right: 0,
+              top: 0,
+              left: 0,
+              display: "flex",
+              justifyContent: "center",
+              alignItems: "center",
+            }}
+            onClick={(e) => {
+              e.stopPropagation;
+              setAfficherModale(false);
+            }}
+          >
+            <div style={{ padding: 30, background: "white" }}>
+              <b>Informations</b>
+              <ul>
+                <li>Taille : 1,85</li>
+                <li>Couleur des cheveux : Noirs</li>
+                <li>Couleur des yeux : Bleus</li>
+              </ul>
+            </div>
+          </div>,
+          document.querySelector("body")
+        )}
       <img src={img} alt={alt} />
       <h2 onClick={afficherInfos}> {name} </h2>
       <p>{description}</p>
