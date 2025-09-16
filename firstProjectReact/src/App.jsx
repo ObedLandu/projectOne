@@ -3,29 +3,29 @@ import Superheroes from "./components/Superheroes/Superheroes";
 import captainAmerica from "./assets/captainAmerica.jpg";
 import { useRef, useState } from "react";
 
-
 // hooks  (useState)
 export default function App() {
   const [superheroPrefere, setSuperHeroPrefere] = useState();
   const [nouveauNomDuSuperhero, setNouveauNomDuSuperhero] = useState("Anonyme");
   const [nouvelleDescDuSuperhero, setNouvelleDescDuSuperhero] = useState("");
-  const [nouvelleImage, setNouvelleImage] = useState()
+  const [nouvellePhoto, setNouvellePhoto] = useState("");
 
   // le hook useRef
-  const nom = useRef()
-  const description = useRef()
-  const photo = useRef()
-
+  const nom = useRef();
+  const description = useRef();
+  const photo = useRef();
 
   // fonctions
   const superheroClique = (name) => {
     setSuperHeroPrefere(name);
   };
 
-  const sauvegarderLeSuperhero =  () => {
-    nouveauNomDuSuperhero()
-    nouvelleDescDuSuperhero()
-  }
+  const sauvegarderLeSuperhero = () => {
+    setNouveauNomDuSuperhero(nom.current.value);
+    setNouvelleDescDuSuperhero(description.current.value);
+    setNouvellePhoto(photo.current.value);
+    
+  };
 
   return (
     <>
@@ -86,6 +86,7 @@ export default function App() {
         <Superhero
           name={nouveauNomDuSuperhero}
           description={nouvelleDescDuSuperhero}
+          photo={nouvellePhoto}
         />
         {/* //paramétrage du superhero numéro 4 */}
         <div
@@ -128,14 +129,22 @@ export default function App() {
             // value={nouvelleDescDuSuperhero}
             // onChange={(event) => setNouvelleDescDuSuperhero(event.target.value)}
           />
-          <label htmlFor="img">Photo</label>
+          <label htmlFor="photo">Photo</label>
           <input
-            id="img"
-            type="text"   
-            ref={photo}         
+            id="photo"
+            type="text"
+            style={{ padding: 10, display: "block", width: "100%" }}
+            ref={photo}
+            // value={nouvelleImage}
+            // onChange={(event) => setNouvelleImage(event.target.value)}
           />
 
-          <div style={{ display: "flex", justifyContent: "end", marginTop: 5 }} onClick={() => {sauvegarderLeSuperhero()}}>
+          <div
+            style={{ display: "flex", justifyContent: "end", marginTop: 5 }}
+            onClick={() => {
+              sauvegarderLeSuperhero();
+            }}
+          >
             <button>Modifier</button>
           </div>
         </div>
